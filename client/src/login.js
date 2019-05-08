@@ -1,16 +1,4 @@
 import React from 'react'
-import {
-  Container,
-  Row,
-  Button,
-  Col,
-  Card,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Form,
-  FormInput
-} from 'shards-react'
 import { Redirect, navigate } from '@reach/router'
 import { CometChat } from '@cometchat-pro/chat'
 import { Mutation } from 'react-apollo'
@@ -34,47 +22,52 @@ const Login = () => {
     return <Redirect noThrow from="/login" to="/" />
   }
   return (
-    <Container>
-      <Row>
-        <Col sm="4" />
-        <Col sm="4">
-          <Card style={{ marginTop: 64 }}>
-            <Mutation
-              mutation={gql`
-                mutation LoginUser($input: CreateUserInput!) {
-                  loginUser(input: $input) {
-                    id
-                    authToken
-                    createdAt
-                  }
+    <div className="container mx-auto mt-32">
+      <div className="max-w-xs mx-auto rounded overflow-hidden shadow-lg">
+        <div className="px-6 py-4">
+          <h1 className="font-bold text-xl text-center mb-2">CometChat Login</h1>
+          <Mutation
+            mutation={gql`
+              mutation LoginUser($input: CreateUserInput!) {
+                loginUser(input: $input) {
+                  id
+                  authToken
+                  createdAt
                 }
-              `}
-            >
-              {(loginUser, { loading }) => {
-                return (
-                  <>
-                    <CardTitle style={{ paddingTop: 24, textAlign: 'center' }}>
-                      CometChat Login
-                    </CardTitle>
-                    <CardBody>
-                      <Form
-                        onSubmit={event => {
-                          event.preventDefault()
-                          loginUser({ variables: { input: { name } } }).then(
-                            handleLogin
-                          )
-                        }}
+              }
+            `}
+          >
+            {(loginUser, { loading }) => {
+              return (
+                <>
+                  <form
+                    onSubmit={event => {
+                      event.preventDefault()
+                      loginUser({ variables: { input: { name } } }).then(
+                        handleLogin
+                      )
+                    }}
+                  >
+                    <div className="mb-4 py-4">
+                      <label
+                        className="block text-grey-darker text-sm font-bold mb-2"
+                        for="username"
                       >
-                        <FormInput
-                          value={name}
-                          onChange={event => setName(event.target.value)}
-                        />
-                      </Form>
-                    </CardBody>
-                    <CardFooter style={{ textAlign: 'center' }}>
-                      <Button
-                        block
+                        Username
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
+                        id="username"
+                        type="text"
+                        placeholder="Username"
+                        value={name}
+                        onChange={event => setName(event.target.value)}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <button
                         disabled={loading}
+                        className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
                         onClick={() => {
                           loginUser({ variables: { input: { name } } }).then(
                             handleLogin
@@ -82,17 +75,16 @@ const Login = () => {
                         }}
                       >
                         {loading ? 'Logging in...' : 'Login'}
-                      </Button>
-                    </CardFooter>
-                  </>
-                )
-              }}
-            </Mutation>
-          </Card>
-        </Col>
-        <Col sm="4" />
-      </Row>
-    </Container>
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )
+            }}
+          </Mutation>
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container, Row, Col } from 'shards-react'
 import { CometChat } from '@cometchat-pro/chat'
 import ConversationListContainer from './conversation-list-container'
 import MessageContainer from './message-container'
@@ -61,16 +60,16 @@ const Messenger = () => {
   }
 
   return (
-    <Container fluid style={{ height: '100vh', padding: 0 }}>
-      <Row noGutters style={{ height: '100%' }}>
-        <Col sm="4" lg="3">
+    <div className="container h-screen mx-auto">
+      <div className="h-full flex flex-row">
+        <div className="w-1/4">
           <ConversationListContainer
             currentUserID={currentUserID}
             conversation={conversation}
             setConversation={setConversation}
           />
-        </Col>
-        <Col sm="8" lg="9">
+        </div>
+        <div className="w-3/4">
           <MessageContainer
             currentUserID={currentUserID}
             messageInput={messageInput}
@@ -78,9 +77,9 @@ const Messenger = () => {
             setMessageInput={setMessageInput}
             onSubmit={handleSubmitMessage}
           />
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -2,19 +2,12 @@ import React from 'react'
 
 const Message = ({ message, currentUserID }) => {
   const isCurrentUserMessage = message.sender.uid === currentUserID
+  const bg = isCurrentUserMessage ? 'bg-blue-light' : 'bg-grey-lighter'
+  const color = isCurrentUserMessage ? 'text-white' : 'text-black'
+  const alignSelf = isCurrentUserMessage ? 'self-end' : 'self-start'
   return (
     <div
-      style={{
-        alignSelf: isCurrentUserMessage ? 'flex-end' : 'flex-start',
-        backgroundColor: isCurrentUserMessage
-          ? 'rgb(102, 153, 204)'
-          : '#f1f0f0',
-        borderRadius: 4,
-        color: isCurrentUserMessage ? '#fff' : '#000',
-        padding: '6px 12px 7px',
-        maxWidth: '85%',
-        marginBottom: 2
-      }}
+      className={`px-4 py-2 mb-2 rounded ${bg} ${color} ${alignSelf}`}
     >
       <span>{message.text}</span>
     </div>

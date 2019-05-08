@@ -5,18 +5,22 @@ const ConversationSelectableListItem = ({
   chat,
   selected = false,
   setConversation
-}) => (
-  <div
-    style={{
-      backgroundColor: selected ? 'rgba(0,0,0,0.05)' : '#fff',
-      cursor: 'pointer'
-    }}
-    onClick={() => {
-      setConversation(chat.id)
-    }}
-  >
-    <ConversationListItem chat={chat} />
-  </div>
-)
+}) => {
+  const backgroundColor = selected ? 'bg-grey-lighter' : 'bg-white'
+  return (
+    <div className={backgroundColor}>
+      <a
+        href=""
+        className="no-underline text-black"
+        onClick={event => {
+          event.preventDefault()
+          setConversation(chat.id)
+        }}
+      >
+        <ConversationListItem chat={chat} />
+      </a>
+    </div>
+  )
+}
 
 export default ConversationSelectableListItem

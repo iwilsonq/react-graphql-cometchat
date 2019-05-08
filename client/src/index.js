@@ -5,9 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import { CometChat } from '@cometchat-pro/chat'
 import App from './app'
 import config from './config'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'shards-ui/dist/css/shards.min.css'
+import './output.css'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000'

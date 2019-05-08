@@ -1,7 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
-import { Alert } from 'shards-react'
 import ConversationListItem from './conversation-list-item'
 import ConversationSelectableListItem from './conversation-selectable-list-item'
 
@@ -26,11 +25,11 @@ const ConversationListContainer = ({
     >
       {({ loading, error, data }) => {
         if (loading) {
-          return <Alert theme="primary">Loading Chats</Alert>
+          return <div>Loading Chats...</div>
         }
 
         if (error) {
-          return <Alert theme="danger">Error loading chats</Alert>
+          return <div>Error loading chats</div>
         }
         const currentUser = data.users.find(user => user.id === currentUserID)
         const availableUsers = data.users.filter(
@@ -42,12 +41,10 @@ const ConversationListContainer = ({
         }
 
         return (
-          <div style={{ overflow: 'scroll', maxHeight: '100vh' }}>
-            <h1 style={{ fontSize: 21, padding: '0 8px', textAlign: 'center' }}>
-              CometChat Messenger
-            </h1>
+          <div className="overflow-scroll max-h-screen">
+            <h1 className="p-4 text-xl text-center">CometChat Messenger</h1>
             <>
-              <ConversationListItem chat={currentUser} isCurrentUser />
+              {currentUser && <ConversationListItem chat={currentUser} isCurrentUser />}
               {availableUsers.map(user => (
                 <ConversationSelectableListItem
                   chat={user}
