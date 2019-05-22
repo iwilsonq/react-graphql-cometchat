@@ -1,7 +1,7 @@
 import React from 'react'
 import { CometChat } from '@cometchat-pro/chat'
-import ConversationListContainer from './conversation-list-container'
-import MessageContainer from './message-container'
+import ConversationListContainer from './ConversationListContainer'
+import MessageContainer from './MessageContainer'
 
 const Messenger = () => {
   const [messageInput, setMessageInput] = React.useState('')

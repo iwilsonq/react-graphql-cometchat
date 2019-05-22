@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from './message'
+import Message from './Message'
 
 const MessageContainer = props => {
   return (

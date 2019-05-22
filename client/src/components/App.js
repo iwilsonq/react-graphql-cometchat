@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Redirect } from '@reach/router'
-import Login from './login'
-import Messenger from './messenger'
+import Login from './Login'
+import Messenger from './Messenger'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   return localStorage.getItem('authToken') ? (

@@ -1,5 +1,5 @@
 import React from 'react'
-import ConversationListItem from './conversation-list-item'
+import ConversationListItem from './ConversationListItem'
 
 const ConversationSelectableListItem = ({
   chat,

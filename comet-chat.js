@@ -10,8 +10,8 @@ const cometChatApi = axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json',
-    appid: appID,
-    apikey: apiKey
+    appid: appID, //'{appID}'
+    apikey: apiKey //'{apiKey}'
   }
 })
 
