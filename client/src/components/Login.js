@@ -1,26 +1,15 @@
 import React from 'react'
-import { Redirect, navigate } from '@reach/router'
-import { CometChat } from '@cometchat-pro/chat'
 import { Mutation } from 'react-apollo'
 import { gql } from 'apollo-boost'
+import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
   const [name, setName] = React.useState('')
+  const { login } = useAuth()
   const handleLogin = ({ data }) => {
-    const { authToken } = data.loginUser
-    CometChat.login(authToken).then(
-      user => {
-        localStorage.setItem('authToken', user.authToken)
-        navigate('/')
-      },
-      error => {
-        console.log('Login failed with exception:', { error })
-      }
-    )
+    login(data.loginUser.authToken)
   }
-  if (localStorage.getItem('authToken')) {
-    return <Redirect noThrow from="/login" to="/" />
-  }
+
   return (
     <div className="container mx-auto mt-32">
       <div className="max-w-xs mx-auto rounded overflow-hidden shadow-lg">
@@ -51,7 +40,7 @@ const Login = () => {
                     <div className="mb-4 py-4">
                       <label
                         className="block text-grey-darker text-sm font-bold mb-2"
-                        for="username"
+                        htmlFor="username"
                       >
                         Username
                       </label>
@@ -68,11 +57,6 @@ const Login = () => {
                       <button
                         disabled={loading}
                         className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-                        onClick={() => {
-                          loginUser({ variables: { input: { name } } }).then(
-                            handleLogin
-                          )
-                        }}
                       >
                         {loading ? 'Logging in...' : 'Login'}
                       </button>

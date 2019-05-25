@@ -12,9 +12,11 @@ This example shows how to build an messenger with React and GraphQL:
 
 This demo uses:
 
-- React (create-react-app)
-- Apollo GraphQL Server + Client
-- CometChat Pro
+- [React](https://reactjs.org)
+- [Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
+- [tailwindcss](https://tailwindcss.com)
+- [Apollo GraphQL Server](https://www.apollographql.com/docs/apollo-server/) + [Client](https://www.apollographql.com/docs/react/)
+- [CometChat Pro](https://cometchat.com/pro?utm_source=github&utm_medium=example-code-readme)
 
 ## Running the demo
 

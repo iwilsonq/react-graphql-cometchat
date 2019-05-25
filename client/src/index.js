@@ -4,6 +4,7 @@ import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import { CometChat } from '@cometchat-pro/chat'
 import App from './components/App'
+import { AuthProvider } from './context/AuthContext'
 import config from './config'
 import './output.css'
 
@@ -15,7 +16,9 @@ CometChat.init(config.appID)
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </ApolloProvider>,
   document.getElementById('root')
 )

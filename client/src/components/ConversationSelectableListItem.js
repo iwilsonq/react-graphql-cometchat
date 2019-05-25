@@ -10,7 +10,7 @@ const ConversationSelectableListItem = ({
   return (
     <div className={backgroundColor}>
       <a
-        href=""
+        href="#"
         className="no-underline text-black"
         onClick={event => {
           event.preventDefault()

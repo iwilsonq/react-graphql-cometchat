@@ -2,13 +2,14 @@ import React from 'react'
 import { CometChat } from '@cometchat-pro/chat'
 import ConversationListContainer from './ConversationListContainer'
 import MessageContainer from './MessageContainer'
+import { useAuth } from '../context/AuthContext'
 
 const Messenger = () => {
   const [messageInput, setMessageInput] = React.useState('')
   const [messageList, setMessageList] = React.useState([])
   const [conversation, setConversation] = React.useState('')
 
-  const [currentUserID] = localStorage.getItem('authToken').split('_')
+  const { currentUserID } = useAuth()
 
   React.useEffect(() => {
     const messagesRequest = new CometChat.MessagesRequestBuilder()

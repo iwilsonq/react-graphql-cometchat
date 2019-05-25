@@ -20,6 +20,7 @@ const cometChatApi = axios.create({
  * 2. POST /users/:uid/auth_tokens to create an auth token
  */
 exports.loginUser = data => {
+  console.log('loginUser', data)
   return new Promise(resolve => {
     createUser(data).then(user => {
       createAuthToken(user.uid).then(authToken => {
