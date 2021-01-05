@@ -13,7 +13,7 @@
   "dependencies": {
     "@babel/cli": "^7.4.4",
     "apollo-server": "^2.4.8",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "graphql": "^14.2.1",
     "micro": "^9.3.4",
     "uuid": "^3.3.2"
